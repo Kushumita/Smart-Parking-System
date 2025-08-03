@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HAL Koraput Parking Map</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      position: relative;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: url('https://odishatour.in/wp-content/uploads/2021/08/Sunabeda-Hal-koraput.jpg') no-repeat center center fixed;
+      background-size: cover;
+      background-color: #eef2f5;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.7);
+      z-index: -1;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    header img {
+      height: 70px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #003366;
+    }
+
+    .map {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .slot {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      width: 180px;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+    }
+
+    .slot-label {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 1rem;
+    }
+
+    .indicators {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .light {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      opacity: 0.2;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    }
+
+    .active {
+      opacity: 1;
+      animation: blink 1s infinite;
+    }
+
+    .red-light {
+      background-color: red;
+      box-shadow: 0 0 16px red;
+    }
+
+    .green-light {
+      background-color: green;
+      box-shadow: 0 0 16px green;
+    }
+
+    .status-label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3e/Hindustan_Aeronautics_Limited_Logo.svg/375px-Hindustan_Aeronautics_Limited_Logo.svg.png" alt="HAL Koraput Logo" />
+    <h1>HAL Koraput - Smart Parking System</h1>
+  </header>
+  <main>
+    <h2>Parking Area Map</h2>
+    <div class="map">
+      <div class="slot" id="slotA">
+        <div class="slot-label">A</div>
+        <div class="indicators">
+          <div class="light green-light active" id="greenA"></div>
+          <div class="light red-light" id="redA"></div>
+        </div>
+        <div class="status-label">Vacant</div>
+      </div>
+      <div class="slot" id="slotB">
+        <div class="slot-label">B</div>
+        <div class="indicators">
+          <div class="light green-light" id="greenB"></div>
+          <div class="light red-light active" id="redB"></div>
+        </div>
+        <div class="status-label">Occupied: Car</div>
+      </div>
+      <div class="slot" id="slotC">
+        <div class="slot-label">C</div>
+        <div class="indicators">
+          <div class="light green-light active" id="greenC"></div>
+          <div class="light red-light" id="redC"></div>
+        </div>
+        <div class="status-label">Vacant</div>
+      </div>
+      <div class="slot" id="slotD">
+        <div class="slot-label">D</div>
+        <div class="indicators">
+          <div class="light green-light" id="greenD"></div>
+          <div class="light red-light active" id="redD"></div>
+        </div>
+        <div class="status-label">Occupied: Bike</div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
